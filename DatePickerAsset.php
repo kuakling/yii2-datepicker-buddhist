@@ -25,6 +25,6 @@ class DatePickerAsset extends AssetBundle
         'js/locales/bootstrap-datepicker.th.js',
     ];
     public $depends = [
-        ''yii\bootstrap\BootstrapPluginAsset'',
+        'yii\bootstrap\BootstrapPluginAsset',
     ];
 }
