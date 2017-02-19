@@ -14,8 +14,19 @@ class DatePicker extends \yii\base\Widget
      */
     public function run()
     {
+        $this->renderInput();
         $asset = DatePickerAsset::register($this->getView());
         $this->registerAsset($asset);
+    }
+    
+    protected function renderInput()
+    {
+        retutn '<div class="input-group">
+    <input type="text" class="form-control" id="test-date">
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></button>
+    </span>
+</div>';
     }
     
     public function registerAsset($asset)
