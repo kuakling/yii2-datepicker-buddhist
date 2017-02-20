@@ -20,7 +20,7 @@ class DatePickerAsset extends AssetBundle
         'css/datepicker.css',
     ];
     public $js = [
-        'js/bootstrap-datepicker.js',
+        'js/bootstrap-datepicker.min.js',
         'js/bootstrap-datepicker-thai.js',
         'js/locales/bootstrap-datepicker.th.js',
     ];
