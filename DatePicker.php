@@ -25,7 +25,6 @@ class DatePicker extends \yii\widgets\InputWidget
     protected function renderInput()
     {
         $options = array_replace_recursive($this->options, ['class' => 'form-control']);
-        $valTh = $this-
         $html = '<div class="input-group">';
         if($this->hasModel()){
             
