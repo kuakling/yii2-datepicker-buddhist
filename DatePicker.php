@@ -27,17 +27,19 @@ class DatePicker extends \yii\widgets\InputWidget
         $options = array_replace_recursive($this->options, ['class' => 'form-control']);
         $html = '<div class="input-group">';
         if($this->hasModel()){
+            $attribute =  preg_replace('/[\[{\(].*[\]}\)]/U' , '', $this->attribute);
+            $this->value = $this->model->{$attribute};
+            $date = \DateTime::createFromFormat('Y-m-d', $this->value);
+            $this->value = $date ? Yii::$app->formatter->asDate($this->value, 'php:d/m/Y') : null;
+            $options = array_replace_recursive($options, ['value' => $this->value]);
             
-            $val = $this->model->isNewRecord ? null : $this->model->{$this->attribute};
-            $date = \DateTime::createFromFormat('Y-m-d', $val);
-            $this->value = $date ? Yii::$app->formatter->asDate($val, 'php:d/m/Y') : null;
-            
-            //$html .= Html::activeTextInput($modelTemp, $this->attribute, $options) ;
-            $this->name = Html::getInputName($this->model, $this->attribute);
-            $html .= Html::textInput($this->name, $this->value, $options);
+            $html .= Html::activeTextInput($this->model, $this->attribute, $options) ;
+            // $this->name = Html::getInputName($this->model, $this->attribute);
+            //$html .= Html::textInput($this->name, $this->value, $options);
         }else{
-            $html .= Html::textInput($this->name, $this->value, $options);
+        $html .= Html::textInput($this->name, $this->value, $options);
         }
+        
         $html .= '<span class="input-group-addon" style="cursor: pointer;" onclick="$(this).closest(\'.input-group\').find(\'input[type=text]\').focus()">';
         $html .= '<i class="glyphicon glyphicon-calendar"></i>';
         $html .= '</span>';
