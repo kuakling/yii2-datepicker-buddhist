@@ -16,6 +16,7 @@ use DateTime;
 use DateTimeZone;
 use yii\helpers\FormatConverter;
 use Yii;
+use yii\base\InvalidParamException;
 
 class ThaiYearFormatter extends Formatter{
 
